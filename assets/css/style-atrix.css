@@ -65,7 +65,8 @@ button.carousel-control-next {
 }
 
 .w-30 {
-    width: 30%!important;
+    height: 870px !important;
+    width: auto;
 }
 
 .fill-prd-popular {
@@ -106,7 +107,8 @@ button.carousel-control-next {
 }
 
 .w-card-prd {
-    width: 60% !important;
+    width: auto !important;
+    height: 360px;
 }
 
 .card-prd {
@@ -167,6 +169,14 @@ li.list-group-item-precio {
     color: #FAFAFA !important;
 }
 
+.card-prd:hover .card-precio .card-precio-2 .list-group .list-group-item a{
+    color: #FAFAFA !important;
+}
+
+.list-group .list-group-item a{
+    color: #051026 !important;
+}
+
 .titulo-productos-todos {
     color: #F5F5F5;
     font-family: 'Open Sans ExTraBold Italic';
@@ -201,4 +211,19 @@ footer img {
     font-family: 'Open Sans ExTraBold Italic';
     font-size: 160px;
     font-weight: 900;
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none !important;
+}
+
+.container-fluid.tarjeta-popular {
+    margin-bottom: 40px;
+}
+
+
+.fill-prd-seleccionado {
+    background-color: #FAFAFA;
+    height: 850px !important;
+    padding-top: 125px;
 }
