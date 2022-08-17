@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-sm">
         <!-- Brand/logo -->
         <div class="marco-logo">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 <img id="logo" src="assets/images/logo/logo.png" srcset="assets/images/logo/logo.png 1x, assets/images/logo@2x.png 2x">
             </a>
         </div>
@@ -27,13 +27,13 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Productos</a>
+                <a class="nav-link" href="index.php">Productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="vistaEmpleado.php">Nosotros</a>
+                <a class="nav-link" href="vistanosotros.php">Nosotros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="vistaProductos.php">Contactenos</a>
+                <a class="nav-link" href="vistacontactanos.php">Contactenos</a>
             </li>
             
         </ul>

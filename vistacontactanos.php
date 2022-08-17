@@ -7,21 +7,27 @@ session_start();
 // string passed via URL
 
 // Display result
-$idprd = htmlspecialchars($_GET["idproducto"]);
+
 $conexion = new mysqli('localhost', 'root', '', 'atrixdb');
-$consulta_productos = $conexion->query("SELECT * FROM V_PRODUCTOS_TODOS where ID = $idprd limit 1");
+if (isset($_GET["idproducto"])) {
+    $idprd = htmlspecialchars($_GET["idproducto"]);
+    $consulta_productos = $conexion->query("SELECT * FROM V_PRODUCTOS_TODOS where ID = $idprd limit 1");
+} else {
+    $idprd = "0";
+    $consulta_productos = [];
+}
 header('Content-Type: text/html; charset=UTF-8');
 include "menu.php"
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/css/all.css"></script>
@@ -51,7 +57,10 @@ include "menu.php"
             <div class="col-10">
                 <div class="container-fluid">
                     <div class="row">
-                        <?php foreach ($consulta_productos as $producto) { ?>
+
+                        <?php
+                        echo ("<input type=\"text\" id=\"codPrd\" hidden value=\"" . $idprd . "\">");
+                        foreach ($consulta_productos as $producto) { ?>
                             <div class="col-6">
                                 <div class="container-fluid tarjeta-popular">
                                     <div class="card card-prd">
@@ -78,7 +87,7 @@ include "menu.php"
                             </div>
                         <?php } ?>
                         <div class="col-6">
-                            <form>
+                            <form id="formContacto">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputNombre">Nombre</label>
@@ -96,71 +105,47 @@ include "menu.php"
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputTel">Teléfono</label>
-                                        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" class="form-control" id="inputTel" placeholder="Teléfono">
+                                        <input type="tel" class="form-control" id="inputTel" placeholder="Teléfono">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputAddress2">Address 2</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                    <label for="inputAddress">Dirección</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Dirección">
                                 </div>
                                 <div class="form-row">
-                                    
+
                                     <div class="form-group col-md-4">
-                                        <label for="inputState">Departamento</label>
-                                        <select id="inputState" class="form-control">
+                                        <label for="inputDpto">Departamento</label>
+                                        <select id="inputDpto" class="form-control">
                                             <option selected>Seleccionar</option>
                                             <?php
                                             $string = file_get_contents("assets/ubigeo/departamentos.json");
                                             $json_a = json_decode($string, true);
                                             foreach ($json_a as $person_name => $person_a) {
-                                                echo "<option id=\"".$person_a['id_ubigeo']."\">".$person_a['nombre_ubigeo']."</option>";
+                                                echo "<option value=\"" . $person_a['id_ubigeo'] . "\">" . $person_a['nombre_ubigeo'] . "</option>";
                                             }
                                             ?>
-                                            
+
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputState">Provincia</label>
-                                        <select id="inputState" class="form-control">
+                                        <label for="inputProv">Provincia</label>
+                                        <select id="inputProv" class="form-control">
                                             <option selected>Seleccionar</option>
-                                            <?php
-                                            $string = file_get_contents("assets/ubigeo/departamentos.json");
-                                            $json_a = json_decode($string, true);
-                                            foreach ($json_a as $person_name => $person_a) {
-                                                echo "<option id=\"".$person_a['id_ubigeo']."\">".$person_a['nombre_ubigeo']."</option>";
-                                            }
-                                            ?>
-                                            
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputState">Distrito</label>
-                                        <select id="inputState" class="form-control">
+                                        <label for="inputDist">Distrito</label>
+                                        <select id="inputDist" class="form-control">
                                             <option selected>Seleccionar</option>
-                                            <?php
-                                            $string = file_get_contents("assets/ubigeo/departamentos.json");
-                                            $json_a = json_decode($string, true);
-                                            foreach ($json_a as $person_name => $person_a) {
-                                                echo "<option id=\"".$person_a['id_ubigeo']."\">".$person_a['nombre_ubigeo']."</option>";
-                                            }
-                                            ?>
-                                            
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                        </label>
-                                    </div>
+                                    <label for="textAreaComentario">Comentario</label>
+                                    <textarea class="form-control" id="textAreaComentario" rows="3"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
+                                <button type="button" id="btn-submitcontacto" class="btn btn-primary btn-send-contacto">Enviar</button>
                             </form>
                         </div>
                     </div>
@@ -173,9 +158,81 @@ include "menu.php"
         <img src="assets/images/Grupo 3.png" alt="" srcset="">
     </footer>
     <script>
-        function Mensaje() {
-            alert("Saludos");
-        }
+        $(document).ready(function() {
+            $("#inputDpto").change(function() {
+                $("#inputProv option[value]").remove();
+                $("#inputDist option[value]").remove();
+                idUbigeoDepartamento = $(':selected', this).attr('value');
+                console.log(idUbigeoDepartamento);
+                $.getJSON('assets/ubigeo/provincias.json', function(data) {
+                    $.each(data, function(index, element) {
+                        if (index == idUbigeoDepartamento) {
+                            $.each(element, function(i, e) {
+                                optionText = e['nombre_ubigeo'];
+                                optionValue = e['id_ubigeo'];
+                                $('#inputProv').append(`<option value="${optionValue}">
+                                ${optionText}
+                            </option>`);
+                            });
+                        }
+
+                    });
+                });
+            });
+
+            $("#inputProv").change(function() {
+                $("#inputDist option[value]").remove();
+                idUbigeoDepartamento = $(':selected', this).attr('value');
+                console.log(idUbigeoDepartamento);
+                $.getJSON('assets/ubigeo/distritos.json', function(data) {
+                    $.each(data, function(index, element) {
+                        if (index == idUbigeoDepartamento) {
+                            $.each(element, function(i, e) {
+                                optionText = e['nombre_ubigeo'];
+                                optionValue = e['id_ubigeo'];
+                                $('#inputDist').append(`<option value="${optionValue}">
+                                ${optionText}
+                            </option>`);
+                            });
+                        }
+
+                    });
+                });
+            });
+
+
+            $("#btn-submitcontacto").click(function(event) {
+                
+                var formData = {
+                    codPrd: $("#codPrd").val(),
+                    nombre: $("#inputNombre").val(),
+                    apellido: $("#inputApellido").val(),
+                    email: $("#inputEmail").val(),
+                    telefono: $("#inputTel").val(),
+                    direccion: $("#inputAddress").val(),
+                    departamento: $("#inputDpto").find(":selected").text(),
+                    provincia: $("#inputProv").find(":selected").text(),
+                    distrito: $("#inputDist").find(":selected").text(),
+                    comentario: $("#textAreaComentario").val(),
+                };
+
+                console.log(formData);
+                
+                $.ajax({
+                type: "POST",
+                url: "operaContacto.php",
+                data: formData,
+                dataType: "json",
+                encode: true,
+                }).done(function (data) {
+                console.log(data);
+                });
+
+
+                event.preventDefault();
+            });
+
+        });
     </script>
 </body>
 

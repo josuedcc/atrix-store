@@ -92,6 +92,17 @@ button.carousel-control-next {
     color: #051026 !important;
 }
 
+.ofertas_populares_N {
+    
+    line-height: 35px;
+    color: #051026 !important;
+}
+.ofertas_populares_N span {
+    font-family: 'Open Sans ExTraBold Italic';
+    font-size: 50px;
+    font-weight: 900;
+}
+
 .ofertas_populares span {
     font-family: 'Open Sans ExTraBold Italic';
     font-size: 80px;
@@ -226,4 +237,11 @@ a:link, a:visited, a:active {
     background-color: #FAFAFA;
     height: 850px !important;
     padding-top: 125px;
+}
+
+.btn-send-contacto {
+    background-color: #E71C4C !important;
+    border-color: #E71C4C !important;
+    border-radius: 50px !important;
+    width: 200px !important;
 }
