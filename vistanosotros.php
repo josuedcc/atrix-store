@@ -37,7 +37,7 @@ include "menu.php"
 <body>
 
     <div class="container-fluid fill-prd-seleccionado">
-        <div class="row">
+        <div class="row r-atrix-nosotros">
             <div class="col-2">
                 <div class="Heading_cf_N">
                     <div class="ofertas_populares_N">
@@ -48,26 +48,22 @@ include "menu.php"
 
             </div>
             <div class="col-9">
-                <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum iaculis facilisis eros in sollicitudin. Vestibulum efficitur nibh sit amet venenatis pretium. Nunc condimentum luctus mauris, eget laoreet lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et blandit tellus. In eget tincidunt tellus. Curabitur elementum malesuada enim eu accumsan.
-
-                    Morbi urna urna, finibus sed tortor in, condimentum accumsan nunc. Mauris eu mauris ac nisi cursus ornare a ut dui. Quisque sit amet mi erat. Vivamus bibendum metus non tellus aliquam varius. Aliquam volutpat leo ante, at fermentum felis rutrum a. Donec nec eros venenatis, iaculis risus ac, euismod ex. Morbi sed feugiat est. Etiam gravida pulvinar dolor, sed vulputate nisl congue consequat. Vestibulum ultricies libero sit amet ante pharetra auctor et non sapien. Quisque egestas elit elit, eget dapibus ligula viverra in. Integer ut condimentum nisl. Quisque eget consectetur dolor. Cras a ante id felis iaculis ullamcorper.</P>
+                <P>Atrix Store es un emprendimiento joven e innovador dedicado a la importación de diversos productos y cuyo objetivo es ser reconocidos por la calidad, excelencia y profesionalismo, el cual nos permite realizar importaciones exitosas, brindando soluciones integrales a cada cliente y adaptarnos a los cambios en el mercado global.</P>
             </div>
         </div>
-        <div class="row">
+        <div class="row r-atrix-nosotros">
             <div class="col-2">
                 <div class="Heading_cf_N">
                     <div class="ofertas_populares_N">
                         <span>MISIÓN</span>
                     </div>
                 </div>
-                
-
             </div>
             <div class="col-9">
-                <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum iaculis facilisis eros in sollicitudin. Vestibulum efficitur nibh sit amet venenatis pretium. Nunc condimentum luctus mauris, eget laoreet lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et blandit tellus. In eget tincidunt tellus. Curabitur elementum malesuada enim eu accumsan.</P>
+                <P>Brindar soluciones integrales que se adaptan a los cambios en el mercado.</P>
             </div>
         </div>
-        <div class="row">
+        <div class="row r-atrix-nosotros">
             <div class="col-2">
                 <div class="Heading_cf_N">
                     <div class="ofertas_populares_N">
@@ -78,7 +74,7 @@ include "menu.php"
 
             </div>
             <div class="col-9">
-                <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum iaculis facilisis eros in sollicitudin. Vestibulum efficitur nibh sit amet venenatis pretium. Nunc condimentum luctus mauris, eget laoreet lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et blandit tellus. In eget tincidunt tellus. Curabitur elementum malesuada enim eu accumsan.</P>
+                <P>Ser reconocidos por la excelencia y profesionalismo en el rubro de la importacion y la primera opcion de los clientes.</P>
             </div>
         </div>
     </div>
